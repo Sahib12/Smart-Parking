@@ -63,19 +63,54 @@ Follow the below listed steps to start a node server on raspberry PI
 * Open Terminal/Power Shell at this location and run the command `npm install` to install the dependencies.
 * Run the command `node index`. This will start a node server at port 3000. You can access the server by using the url `http://localhost:3000/`. Only get requests can be made to this server. Express js is used f
 * Run the command `ngrok http 3000`. Ngrok is a lightweight tool that creates a secure tunnel on your local machine along with a public URL you can use for browsing your local site.
-* Copy the public url visible on the command prompt. Refer the screenshot below
+* Copy the public url visible on the command prompt we will need it later. Refer the screenshot below. [clickhere] (https://drive.google.com/open?id=1-V_KO9Zo64b_Pd9fyPAN0yD3dppoM12l) to see the screenshot.
+
+2. HOW TO RUN THE NODE APPLICATION WHICH WILL SEND THE STATE OF PARKING SLOT TO THE REALTIME DATABASE.
+
+* Connect Arduino to Raspberry pi via USB (We assume that you have already integrated the IR sensor into Arduino).
+* Navigate to the folder 'RaspberrySendState'.
+* Open Terminal/Power Shell at this location and run the command `npm install` to install the dependencies.
+* Open the file index.js in any editor. There are four variables named `lat`, `lng`, `url`, `rate`. We need to put in values into these variables. We are hardcoding the values. This setup has to be done just once.
+    * lat - It contains the latitude of the parking slot.
+    * lng - It contains the longitude of the parking slot.
+    * rate - It contains the parking charges per minute.
+    * url - It contains the public url of the node server which we configured earlier.
+* Run the command `node index`. This will execute index.js which will constantly save the state of the parking slot to the database.
+
+I have tested it in my windows10 laptop, because I was not having raspberry pi. But this should work fine in raspberry pi too.
+
+## Replacing Arduino and Raspberry Pi by an Android phone
+
+It is practically not feasible to install multiple Arduino boards for testing.​
+It is possible to use an android phone as replacement for Arduino board and Raspberry Pi.​
+Android phone's proximity sensor is used as a replacement for IR sensor on the Arduino board.​
+Termux Terminal is used to create a Linux environment on our android phone. ​
+Please refer the following video to see a demo on how android phone can be used as a replacement for Arduino and Raspberry Pi.​
+
+
+Steps :
+
+1. Download termux terminal from [here](https://play.google.com/store/apps/details?id=com.termux&hl=en_IN).
+2. Run command `pkg install -g nodejs`. This will install nodejs.
+2. Download ngrok package from [here](https://steemit.com/utopian-io/@faisalamin/how-to-download-install-ngrok-in-android-termux-also-work-for-non-rooted-devices)
+3. Open termux terminal and run command `termux-setup-storage`.
+4. Copy 'NodeServer' folder into your android phone.
+5. Open Terminal/Power Shell at this location and run the command `npm install` to install the dependencies.
+6. Run the command `node index`. This will start a node server at port 3000. You can access the server by using the url `http://localhost:3000/`. Only get requests can be made to this server. Express js is used f
+7. Run the command `ngrok http 3000`. Ngrok is a lightweight tool that creates a secure tunnel on your local machine along with a public URL you can use for browsing your local site.
+8. Copy the public url visible on the command prompt we will need it later. Refer the screenshot below. [clickhere] (https://drive.google.com/open?id=1-V_KO9Zo64b_Pd9fyPAN0yD3dppoM12l) to see the screenshot.
+9. Navigate to 'ionicSensor' folder. It contains a file `test.apk`. Install this apk (Before installing please make sure developer options are enabled on your phone and usb debugging is turned on).
+10. Open the app, paste the url that we copied in step 8 into the text box and click on 'submit' button and leave the app open. Click [here] () to see the demo.
+
+
+## Using the mobile application
+
+
+'smartParking' folder contains the code of final ionic application which will be used by the end users. There is a file named 'final.apk' in this folder. Install this apk (Before installing please make sure developer options are enabled on your phone and usb debugging is turned on).
 
 
 
 
 
 
-Arduino is connected to the raspberry pi
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
