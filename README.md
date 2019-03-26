@@ -15,23 +15,42 @@ To create a system through which we can solve the parking problem in our country
 * A hybrid application is built using Ionic Framework v1 and Cordova. This application will be used by the users to​
 Get the list of nearest available parking slots, book a parking slot, get directions to it on google maps and to get the list of their past bookings.
 
-## Installation
+# Installation
+
+## Arduino Integration with IR sensor
+
+Paste the following code in the Arduino ide and push it to your Arduino board. Here we have used pin number 8, you can use any pin, just update that pin number in the below code.
+ ```
+void setup() {
+ Serial.begin(9600);
+ pinMode(8, INPUT);// set pin as input
+
+}
+
+void loop() {
+  int detect = digitalRead(8);
+  if(detect == LOW){
+    
+   Serial.println("yes"); 
+  }else{
+    
+   Serial.println("no");  
+  }
+  delay(500);
+}
+```
+
+REFERENCES TAKEN FROM :​
+* https://github.com/adafruit/Raw-IR-decoder-for-Arduino/blob/master/rawirdecodestruct/rawirdecodestruct.ino​
+* http://surajpassion.in/ir-obstacle-sensor-with-arduino/​
+* https://www.popsci.com/diy/article/2013-01/program-arduino-few-simple-steps​
+
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-```bash
-pip install foobar
-```
-WQWERT
-## Usage
+## Connecting Arduino with Raspberry Pi
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+Arduino is connected to the raspberry pi
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
