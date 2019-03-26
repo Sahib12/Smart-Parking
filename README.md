@@ -50,6 +50,26 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ## Connecting Arduino with Raspberry Pi
 
+Arduino Board is connect to Raspberry Pi. Raspberry Pi performs two major functions.
+
+* It sends the state of IR sensor to Firebase Realtime Database.
+* It runs a node server, which is used by the mobile application to check whether the raspberry pi is live or not.
+
+1. HOW TO RUN THE NODE SERVER ON RASPBERRY PI
+
+Follow the below listed steps to start a node server on raspberry PI
+
+* Open the folder 'NodeServer'.
+* Open Terminal/Power Shell at this location and run the command `npm install` to install the dependencies.
+* Run the command `node index`. This will start a node server at port 3000. You can access the server by using the url `http://localhost:3000/`. Only get requests can be made to this server. Express js is used f
+* Run the command `ngrok http 3000`. Ngrok is a lightweight tool that creates a secure tunnel on your local machine along with a public URL you can use for browsing your local site.
+* Copy the public url visible on the command prompt. Refer the screenshot below
+
+
+
+
+
+
 Arduino is connected to the raspberry pi
 
 ## Contributing
